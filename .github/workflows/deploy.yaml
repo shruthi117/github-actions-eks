@@ -45,4 +45,6 @@ jobs:
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
           docker push $REGISTRY/$REPOSITORY:latest
 
-          echo "IMAGE_
+          echo "IMAGE_URI=$REGISTRY/$REPOSITORY:$IMAGE_TAG" >> $GITHUB_ENV
+          echo "IMAGE_URI_LATEST=$REGISTRY/$REPOSITORY:latest" >> $GITHUB_ENV
+          
