@@ -56,8 +56,10 @@ jobs:
         env:
           IMAGE_URI: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
         run: |
-          sed -i "s|DOCKER_IMAGE|$IMAGE_URI|g" deployment.yaml
-          kubectl apply -n $NAMESPACE -f deployment.yaml
-          kubectl apply -n $NAMESPACE -f service.yaml
+          sed -i "s|DOCKER_IMAGE|$IMAGE_URI|g" manifests/deployment.yaml
+          kubectl apply -n $NAMESPACE -f manifests/deployment.yaml
+          kubectl apply -n $NAMESPACE -f manifests/service.yaml
           kubectl rollout status deployment/kubernetes-demo-hello-app -n $NAMESPACE
+
+
 
