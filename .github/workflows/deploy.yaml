@@ -61,5 +61,6 @@ jobs:
           kubectl apply -n $NAMESPACE -f manifests/service.yaml
           kubectl rollout status deployment/kubernetes-demo-hello-app -n $NAMESPACE
 
-
-
+      - name: Deploy HPA to EKS
+        run: |
+          kubectl apply -n $NAMESPACE -f manifests/hpa.yaml
